@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-[#0b0d12]/80 backdrop-blur-xl transition-all">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        
+
         {/* Brand Logo */}
         <button
           onClick={() => setActiveTab('home')}
@@ -53,11 +53,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
-                  isActive
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${isActive
                     ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-sm'
                     : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
-                }`}
+                  }`}
               >
                 <Icon className={`h-4 w-4 ${isActive ? 'text-amber-400' : 'text-slate-400'}`} />
                 {item.label}
@@ -69,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         {/* GitHub Repository Link */}
         <div className="hidden sm:flex items-center gap-3">
           <a
-            href="https://github.com"
+            href="https://github.com/katadox/Book3x3"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-lg border border-slate-700/60 bg-slate-900/60 px-3.5 py-1.5 text-xs font-semibold text-slate-300 shadow-sm hover:border-amber-500/40 hover:bg-slate-800 hover:text-white transition-all"
@@ -106,11 +105,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-medium transition-all ${
-                    isActive
+                  className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-medium transition-all ${isActive
                       ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                       : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                  }`}
+                    }`}
                 >
                   <Icon className="h-5 w-5" />
                   {item.label}

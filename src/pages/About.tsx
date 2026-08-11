@@ -10,7 +10,7 @@ const GithubIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
 export const About: React.FC = () => {
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 space-y-12 text-slate-300">
-      
+
       {/* Header */}
       <div className="space-y-4 text-center">
         <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-semibold text-amber-300">
@@ -112,7 +112,7 @@ export const About: React.FC = () => {
         </div>
 
         <a
-          href="https://github.com"
+          href="https://github.com/katadox/Book3x3"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-3 text-sm font-bold text-slate-950 shadow-glow hover:from-amber-400 hover:to-amber-500 transition-all shrink-0"
