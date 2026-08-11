@@ -14,5 +14,5 @@ export default defineConfig({
    * If deploying to `https://<USERNAME>.github.io/book9x9/`, set `base: '/book9x9/'`.
    * If deploying to a custom root domain (or `https://<USERNAME>.github.io/`), set `base: '/'`.
    */
-  base: '/Book3x3/',
+  base: '/book9x9/',
 })
