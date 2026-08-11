@@ -9,7 +9,7 @@ Book3x3 is a modern, client-side web application inspired by popular 3×3 aesthe
 
 ## 🌟 Live Demo
 
-[https://katadox.github.io/book9x9/](https://katadox.github.io/book9x9/)
+[https://katadox.github.io/Book3x3/](https://katadox.github.io/Book3x3/)
 
 ---
 
