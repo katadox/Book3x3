@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-[#0b0d12]: #0b0d12;
+  --color-obsidian-950: #07090e;
+  --color-obsidian-900: #0d1117;
+  --color-obsidian-800: #181f2c;
+  --color-book-gold: #dfa649;
+  --color-book-cardBg: #141822;
+}
+
+body {
+  background-color: #0b0d12;
+  color: #f1f5f9;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Glassmorphism & Cards */
+.glass-panel {
+  background: rgba(20, 24, 34, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(26, 32, 44, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(35, 43, 58, 0.85);
+  border-color: rgba(223, 166, 73, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 20px rgba(223, 166, 73, 0.15);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222b3d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #303b52;
+}
+
+/* Book Cover Shadows & Glows */
+.shadow-glow {
+  box-shadow: 0 0 25px -5px rgba(223, 166, 73, 0.25);
+}
+
+.shadow-glow-lg {
+  box-shadow: 0 0 40px -5px rgba(223, 166, 73, 0.35);
+}
+
+.shadow-book {
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
