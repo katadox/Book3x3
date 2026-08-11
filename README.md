@@ -101,21 +101,6 @@ The output static files will be placed in the `/dist` directory.
 
 ---
 
-## 🌐 Deploying to GitHub Pages
-
-This project includes an automated GitHub Actions workflow (`.github/workflows/deploy.yml`).
-
-### Setup Steps:
-1. Push your repository to GitHub (`main` branch).
-2. Go to your repository settings on GitHub: **Settings → Pages**.
-3. Under **Build and deployment → Source**, select **GitHub Actions**.
-4. If your repository name is `book3x3`, update the `base` option in `vite.config.ts`:
-   ```ts
-   base: '/book3x3/'
-   ```
-5. Push changes to `main`. GitHub Actions will automatically compile and deploy your static site.
-
----
 
 ## 📄 License
 
