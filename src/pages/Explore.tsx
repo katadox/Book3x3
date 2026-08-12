@@ -30,7 +30,7 @@ export const Explore: React.FC<ExploreProps> = ({ onUsePresetGrid }) => {
         {CURATED_EXAMPLES.map((example) => (
           <div
             key={example.id}
-            className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-amber-500/40 hover:shadow-glow"
+            className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-2xl backdrop-blur-xl transition-all duration-200 ease-out hover:border-amber-500/40 hover:shadow-glow"
           >
             <div className="space-y-4">
               {/* Header Badge */}
@@ -43,7 +43,7 @@ export const Explore: React.FC<ExploreProps> = ({ onUsePresetGrid }) => {
 
               {/* Title & Description */}
               <div>
-                <h3 className="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors">
+                <h3 className="font-serif text-xl font-bold text-white group-hover:text-amber-300 transition-colors duration-150">
                   {example.title}
                 </h3>
                 <p className="text-xs text-slate-400 line-clamp-2 mt-1 leading-relaxed">
@@ -58,7 +58,7 @@ export const Explore: React.FC<ExploreProps> = ({ onUsePresetGrid }) => {
                     <img
                       src={book.coverUrl}
                       alt={book.title}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
@@ -70,7 +70,7 @@ export const Explore: React.FC<ExploreProps> = ({ onUsePresetGrid }) => {
             <div className="pt-6">
               <button
                 onClick={() => onUsePresetGrid(example.books, example.settings)}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800 py-3 text-xs font-bold text-slate-100 hover:bg-amber-500 hover:text-slate-950 transition-all shadow-sm group-hover:bg-amber-500 group-hover:text-slate-950"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-800 py-3 text-xs font-bold text-slate-100 hover:bg-amber-500 hover:text-slate-950 active:scale-[0.98] transition-all duration-150 shadow-sm group-hover:bg-amber-500 group-hover:text-slate-950"
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Use this grid</span>

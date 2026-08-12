@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <button
                 onClick={onStartCreate}
-                className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 px-7 py-3.5 text-base font-bold text-slate-950 shadow-glow hover:shadow-glow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 px-7 py-3.5 text-base font-bold text-slate-950 shadow-glow hover:shadow-glow-lg hover:scale-[1.02] active:scale-[0.98] transition-transform transition-shadow duration-150"
               >
                 <Sparkles className="h-5 w-5" />
                 <span>Create a 3×3</span>
@@ -52,7 +52,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
 
               <button
                 onClick={onExplore}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/80 px-6 py-3.5 text-base font-semibold text-slate-200 hover:border-slate-500 hover:bg-slate-800 transition-all"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl border border-slate-700/80 bg-slate-900/80 px-6 py-3.5 text-base font-semibold text-slate-200 hover:border-slate-500 hover:bg-slate-800 active:scale-[0.98] transition-all duration-150"
               >
                 <Compass className="h-5 w-5 text-amber-400" />
                 <span>Explore Example Grids</span>
@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
               {/* Outer Decorative Card Frame */}
-              <div className="rounded-2xl border border-slate-800/80 bg-slate-900/90 p-4 sm:p-6 shadow-2xl backdrop-blur-xl transition-all hover:border-amber-500/30">
+              <div className="rounded-2xl border border-slate-800/80 bg-slate-900/90 p-4 sm:p-6 shadow-2xl backdrop-blur-xl transition-colors duration-200 hover:border-amber-500/30">
                 <div className="mb-4 text-center">
                   <span className="font-serif text-sm font-semibold tracking-wider text-amber-300 uppercase">
                     My Favorite Books
@@ -94,15 +94,15 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
                   {demoBooks.map((book, idx) => (
                     <div
                       key={book.id || idx}
-                      className="group relative aspect-[2/3] overflow-hidden rounded-lg bg-slate-900 shadow-md transition-all duration-300 hover:scale-105 hover:z-20 hover:shadow-xl"
+                      className="group relative aspect-[2/3] overflow-hidden rounded-lg bg-slate-900 shadow-md transition-transform duration-200 ease-out hover:scale-105 hover:z-20 hover:shadow-xl"
                     >
                       <img
                         src={book.coverUrl}
                         alt={book.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-2 flex flex-col justify-end text-center">
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-150 p-2 flex flex-col justify-end text-center">
                         <span className="font-serif text-[10px] font-bold text-white line-clamp-1">{book.title}</span>
                         <span className="text-[8px] text-amber-300 line-clamp-1">{book.author}</span>
                       </div>
@@ -121,7 +121,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
 
         {/* Feature Section Cards */}
         <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all hover:border-amber-500/30 hover:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all duration-200 hover:border-amber-500/30 hover:bg-slate-900/80 hover:-translate-y-0.5">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400 mb-4">
               <Search className="h-6 w-6" />
             </div>
@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all hover:border-amber-500/30 hover:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all duration-200 hover:border-amber-500/30 hover:bg-slate-900/80 hover:-translate-y-0.5">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 mb-4">
               <Move className="h-6 w-6" />
             </div>
@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all hover:border-amber-500/30 hover:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all duration-200 hover:border-amber-500/30 hover:bg-slate-900/80 hover:-translate-y-0.5">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400 mb-4">
               <Palette className="h-6 w-6" />
             </div>
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ onStartCreate, onExplore }) => {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all hover:border-amber-500/30 hover:bg-slate-900/80">
+          <div className="rounded-2xl border border-slate-800/70 bg-slate-900/50 p-6 backdrop-blur-md transition-all duration-200 hover:border-amber-500/30 hover:bg-slate-900/80 hover:-translate-y-0.5">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 mb-4">
               <Download className="h-6 w-6" />
             </div>

@@ -86,7 +86,7 @@ export const CustomizationPanel: React.FC<CustomizationPanelProps> = ({
             <button
               key={layout.id}
               onClick={() => onChangeSettings({ layoutStyle: layout.id })}
-              className={`rounded-xl border p-2.5 text-left transition-all ${
+              className={`rounded-xl border p-2.5 text-left active:scale-[0.97] transition-all duration-150 ${
                 settings.layoutStyle === layout.id
                   ? 'border-amber-500 bg-amber-500/10 text-amber-300 shadow-sm'
                   : 'border-slate-800 bg-slate-950/60 text-slate-300 hover:border-slate-700 hover:bg-slate-800/50'
@@ -110,7 +110,7 @@ export const CustomizationPanel: React.FC<CustomizationPanelProps> = ({
             <button
               key={bg.id}
               onClick={() => onChangeSettings({ backgroundMode: bg.id })}
-              className={`rounded-xl border py-2 px-2 text-center text-xs font-medium transition-all ${
+              className={`rounded-xl border py-2 px-2 text-center text-xs font-medium active:scale-[0.97] transition-all duration-150 ${
                 settings.backgroundMode === bg.id
                   ? 'border-amber-500 bg-amber-500/10 text-amber-300'
                   : 'border-slate-800 bg-slate-950/60 text-slate-300 hover:border-slate-700 hover:bg-slate-800/50'
@@ -146,7 +146,7 @@ export const CustomizationPanel: React.FC<CustomizationPanelProps> = ({
             <button
               key={font.id}
               onClick={() => onChangeSettings({ fontFamily: font.id })}
-              className={`rounded-xl border py-2.5 px-3 text-left transition-all ${
+              className={`rounded-xl border py-2.5 px-3 text-left active:scale-[0.97] transition-all duration-150 ${
                 settings.fontFamily === font.id
                   ? 'border-amber-500 bg-amber-500/10 text-amber-300'
                   : 'border-slate-800 bg-slate-950/60 text-slate-300 hover:border-slate-700'
@@ -171,7 +171,7 @@ export const CustomizationPanel: React.FC<CustomizationPanelProps> = ({
               <button
                 key={s.id}
                 onClick={() => onChangeSettings({ gridSpacing: s.id })}
-                className={`rounded-lg border py-1.5 text-center text-xs font-medium transition-all ${
+                className={`rounded-lg border py-1.5 text-center text-xs font-medium active:scale-[0.96] transition-all duration-150 ${
                   settings.gridSpacing === s.id
                     ? 'border-amber-500 bg-amber-500/20 text-amber-300 font-bold'
                     : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white'
@@ -200,7 +200,7 @@ export const CustomizationPanel: React.FC<CustomizationPanelProps> = ({
               <button
                 key={r.id}
                 onClick={() => onChangeSettings({ borderRadius: r.id })}
-                className={`rounded-lg border py-1.5 text-center text-xs font-medium transition-all ${
+                className={`rounded-lg border py-1.5 text-center text-xs font-medium active:scale-[0.96] transition-all duration-150 ${
                   settings.borderRadius === r.id
                     ? 'border-amber-500 bg-amber-500/20 text-amber-300 font-bold'
                     : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white'

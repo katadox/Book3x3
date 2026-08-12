@@ -130,6 +130,8 @@ export const Create: React.FC<CreateProps> = ({
           <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 backdrop-blur-xl shadow-2xl">
             <BookSearch
               selectedBooks={books}
+              targetSlot={targetSlot}
+              onClearTargetSlot={() => setTargetSlot(null)}
               onAddBook={handleAddBook}
             />
           </div>
@@ -137,6 +139,7 @@ export const Create: React.FC<CreateProps> = ({
           {/* Interactive 3x3 Grid Editor */}
           <GridEditor
             books={books}
+            targetSlot={targetSlot}
             onRemoveBook={handleRemoveBook}
             onSwapSlots={handleSwapSlots}
             onSelectSlot={(slot) => setTargetSlot(slot)}

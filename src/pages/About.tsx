@@ -115,7 +115,7 @@ export const About: React.FC = () => {
           href="https://github.com/katadox/Book3x3"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-3 text-sm font-bold text-slate-950 shadow-glow hover:from-amber-400 hover:to-amber-500 transition-all shrink-0"
+          className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 px-6 py-3 text-sm font-bold text-slate-950 shadow-glow hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] transition-all duration-150 shrink-0"
         >
           <GithubIcon className="h-5 w-5" />
           <span>Star on GitHub</span>

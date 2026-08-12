@@ -12,6 +12,8 @@
   --color-obsidian-800: #181f2c;
   --color-book-gold: #dfa649;
   --color-book-cardBg: #141822;
+
+  --ease-emil-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 body {
@@ -37,7 +39,11 @@ body {
 }
 
 .glass-card-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 200ms cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 200ms ease,
+              box-shadow 200ms ease;
+  will-change: transform, opacity;
 }
 
 .glass-card-hover:hover {
@@ -45,6 +51,41 @@ body {
   border-color: rgba(223, 166, 73, 0.3);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 20px rgba(223, 166, 73, 0.15);
+}
+
+.glass-card-hover:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Modal & Drawer Animations (Emil Kowalski Guidelines) */
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-enter {
+  animation: modalScaleIn 180ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 150ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  will-change: opacity;
 }
 
 /* Custom Scrollbars */
@@ -78,3 +119,4 @@ body {
 .shadow-book {
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4);
 }
+

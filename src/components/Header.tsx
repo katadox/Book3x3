@@ -29,13 +29,13 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         {/* Brand Logo */}
         <button
           onClick={() => setActiveTab('home')}
-          className="group flex items-center gap-3 focus:outline-none"
+          className="group flex items-center gap-3 focus:outline-none active:scale-[0.97] transition-transform duration-150"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 shadow-glow transition-all group-hover:scale-105">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 shadow-glow transition-transform duration-150 group-hover:scale-105">
             <span className="font-serif text-lg font-bold tracking-wider text-slate-950">3×3</span>
           </div>
           <div className="text-left">
-            <span className="block font-serif text-xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
+            <span className="block font-serif text-xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors duration-150">
               Book3x3
             </span>
             <span className="hidden sm:block text-[10px] uppercase tracking-widest text-slate-400">
@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${isActive
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-150 active:scale-[0.97] ${isActive
                     ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20 shadow-sm'
                     : 'text-slate-300 hover:bg-slate-800/60 hover:text-white'
                   }`}
@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             href="https://github.com/katadox/Book3x3"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-lg border border-slate-700/60 bg-slate-900/60 px-3.5 py-1.5 text-xs font-semibold text-slate-300 shadow-sm hover:border-amber-500/40 hover:bg-slate-800 hover:text-white transition-all"
+            className="flex items-center gap-2 rounded-lg border border-slate-700/60 bg-slate-900/60 px-3.5 py-1.5 text-xs font-semibold text-slate-300 shadow-sm hover:border-amber-500/40 hover:bg-slate-800 hover:text-white active:scale-[0.97] transition-all duration-150"
             aria-label="View source code on GitHub"
           >
             <GithubIcon className="h-4 w-4" />
@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         <div className="flex md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white focus:outline-none"
+            className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white active:scale-[0.95] transition-all duration-150 focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -93,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-800 bg-[#0d1117]/95 px-4 pt-2 pb-4 shadow-2xl backdrop-blur-xl animate-fade-in">
+        <div className="md:hidden border-b border-slate-800 bg-[#0d1117]/95 px-4 pt-2 pb-4 shadow-2xl backdrop-blur-xl animate-modal-enter">
           <div className="space-y-1">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-medium transition-all ${isActive
+                  className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-base font-medium transition-all duration-150 active:scale-[0.98] ${isActive
                       ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                       : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                     }`}
@@ -118,10 +118,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
             <div className="pt-3 border-t border-slate-800/80">
               <a
-                href="https://github.com"
+                href="https://github.com/katadox/Book3x3"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-lg bg-slate-800 px-4 py-2.5 text-sm font-semibold text-white"
+                className="flex items-center justify-center gap-2 rounded-lg bg-slate-800 px-4 py-2.5 text-sm font-semibold text-white active:scale-[0.98] transition-all duration-150"
               >
                 <GithubIcon className="h-4 w-4" />
                 <span>View on GitHub</span>

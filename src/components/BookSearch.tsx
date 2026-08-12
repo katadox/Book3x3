@@ -7,10 +7,17 @@ import { Search, Loader2, RefreshCw, BookOpen, AlertCircle } from 'lucide-react'
 
 interface BookSearchProps {
   selectedBooks: (Book | null)[];
+  targetSlot?: number | null;
+  onClearTargetSlot?: () => void;
   onAddBook: (book: Book) => void;
 }
 
-export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook }) => {
+export const BookSearch: React.FC<BookSearchProps> = ({
+  selectedBooks,
+  targetSlot = null,
+  onClearTargetSlot,
+  onAddBook,
+}) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Book[]>([]);
   const [loading, setLoading] = useState(false);
@@ -19,12 +26,25 @@ export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook
   const [hasSearched, setHasSearched] = useState(false);
 
   const abortControllerRef = useRef<AbortController | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const activeCount = selectedBooks.filter((b) => b !== null).length;
   const canAddMore = activeCount < 9;
 
   // Preset search tags
   const QUICK_SUGGESTIONS = ['The Hobbit', 'Dune', '1984', 'Pride and Prejudice', 'Neuromancer', 'Frankenstein'];
+
+  // Scroll into view & focus search input when a slot is targeted
+  useEffect(() => {
+    if (targetSlot !== null && targetSlot !== undefined) {
+      containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [targetSlot]);
 
   useEffect(() => {
     const trimmed = query.trim();
@@ -79,7 +99,7 @@ export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook
   };
 
   return (
-    <div className="space-y-6">
+    <div ref={containerRef} className="space-y-6 scroll-mt-24">
       
       {/* Header & Status Indicator */}
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -103,6 +123,24 @@ export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook
         </div>
       </div>
 
+      {/* Targeted Slot Active Banner */}
+      {targetSlot !== null && targetSlot !== undefined && (
+        <div className="flex items-center justify-between rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-2.5 text-xs font-bold text-amber-300 shadow-sm animate-modal-enter">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-amber-400 animate-ping" />
+            <span>Targeting Slot #{targetSlot + 1} — Search and pick a book for this slot</span>
+          </div>
+          {onClearTargetSlot && (
+            <button
+              onClick={onClearTargetSlot}
+              className="rounded-lg bg-slate-800 px-2.5 py-1 text-[11px] font-semibold text-slate-300 hover:bg-slate-700 active:scale-[0.96] transition-all duration-150"
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      )}
+
       {/* Search Input Bar */}
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
@@ -110,11 +148,16 @@ export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook
         </div>
 
         <input
+          ref={inputRef}
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search books, authors, or ISBN..."
-          className="w-full rounded-xl border border-slate-800 bg-slate-900/90 pl-11 pr-10 py-3 text-sm text-white placeholder-slate-400 shadow-inner focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all"
+          className={`w-full rounded-xl border bg-slate-900/90 pl-11 pr-10 py-3 text-sm text-white placeholder-slate-400 shadow-inner focus:outline-none transition-all duration-150 ${
+            targetSlot !== null && targetSlot !== undefined
+              ? 'border-amber-400 ring-2 ring-amber-400/50 shadow-glow'
+              : 'border-slate-800 focus:border-amber-500 focus:ring-1 focus:ring-amber-500'
+          }`}
         />
 
         {loading && (
@@ -133,7 +176,7 @@ export const BookSearch: React.FC<BookSearchProps> = ({ selectedBooks, onAddBook
               <button
                 key={tag}
                 onClick={() => setQuery(tag)}
-                className="rounded-lg border border-slate-800/80 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-amber-500/40 hover:bg-slate-800 hover:text-white transition-all"
+                className="rounded-lg border border-slate-800/80 bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-amber-500/40 hover:bg-slate-800 hover:text-white active:scale-[0.96] transition-all duration-150"
               >
                 + {tag}
               </button>

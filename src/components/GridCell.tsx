@@ -5,6 +5,7 @@ import { Plus, Trash2, ArrowRightLeft, Move } from 'lucide-react';
 interface GridCellProps {
   index: number;
   book: Book | null;
+  isTargeted?: boolean;
   onRemove: (index: number) => void;
   onSelectSlot: (index: number) => void;
   onOpenMobileMove: (index: number) => void;
@@ -15,6 +16,7 @@ interface GridCellProps {
 export const GridCell: React.FC<GridCellProps> = ({
   index,
   book,
+  isTargeted = false,
   onRemove,
   onSelectSlot,
   onOpenMobileMove,
@@ -52,17 +54,19 @@ export const GridCell: React.FC<GridCellProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => onSelectSlot(index)}
-        className={`group relative flex cursor-pointer aspect-[2/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed transition-all duration-300 ${
+        className={`group relative flex cursor-pointer aspect-[2/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed active:scale-[0.98] transition-all duration-200 ease-out ${
           isDragOver
             ? 'border-amber-400 bg-amber-500/10 scale-105'
+            : isTargeted
+            ? 'border-amber-400 bg-amber-500/20 ring-2 ring-amber-400/60 shadow-glow'
             : 'border-slate-800 bg-slate-900/40 hover:border-amber-500/50 hover:bg-slate-900/80 hover:shadow-lg'
         }`}
       >
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-amber-400 group-hover:scale-110 transition-transform">
+        <div className={`flex h-10 w-10 items-center justify-center rounded-full ${isTargeted ? 'bg-amber-500 text-slate-950 scale-110' : 'bg-slate-800/80 text-amber-400 group-hover:scale-110'} transition-all duration-150`}>
           <Plus className="h-5 w-5" />
         </div>
-        <span className="mt-2 text-xs font-semibold text-slate-300 group-hover:text-amber-300">
-          + Add book
+        <span className={`mt-2 text-xs font-bold ${isTargeted ? 'text-amber-300' : 'text-slate-300 group-hover:text-amber-300'} transition-colors duration-150`}>
+          {isTargeted ? `Slot ${index + 1} Targeted` : '+ Add book'}
         </span>
         <span className="text-[10px] text-slate-400">Slot {index + 1}</span>
       </div>
@@ -76,9 +80,11 @@ export const GridCell: React.FC<GridCellProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`group relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-slate-950 border transition-all duration-300 ${
+      className={`group relative aspect-[2/3] w-full overflow-hidden rounded-xl bg-slate-950 border transition-all duration-200 ease-out ${
         isDragOver
           ? 'border-amber-400 ring-2 ring-amber-400/50 scale-105 z-30'
+          : isTargeted
+          ? 'border-amber-400 ring-2 ring-amber-400/60 shadow-glow z-20'
           : 'border-slate-800 shadow-book hover:shadow-2xl hover:border-amber-500/40'
       }`}
       title={book.title}
@@ -87,7 +93,7 @@ export const GridCell: React.FC<GridCellProps> = ({
       <img
         src={book.coverUrl}
         alt={book.title}
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
         onError={(e) => {
           (e.target as HTMLImageElement).src = book.coverUrl;
         }}
@@ -100,7 +106,7 @@ export const GridCell: React.FC<GridCellProps> = ({
       </div>
 
       {/* Hover Control Overlay (Desktop) */}
-      <div className="absolute inset-0 z-20 flex flex-col justify-between bg-slate-950/85 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-250 backdrop-blur-sm">
+      <div className="absolute inset-0 z-20 flex flex-col justify-between bg-slate-950/85 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-150 backdrop-blur-sm">
         <div className="text-center space-y-0.5 pt-2" title={book.title}>
           <h4 className="font-serif text-xs font-bold text-white line-clamp-3 leading-snug">{book.title}</h4>
           <p className="text-[10px] text-amber-400 line-clamp-1 mt-0.5">{book.author}</p>
@@ -113,7 +119,7 @@ export const GridCell: React.FC<GridCellProps> = ({
               e.stopPropagation();
               onSelectSlot(index);
             }}
-            className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-amber-500 py-1.5 text-xs font-bold text-slate-950 hover:bg-amber-400 transition-colors shadow-sm"
+            className="flex w-full items-center justify-center gap-1.5 rounded-lg bg-amber-500 py-1.5 text-xs font-bold text-slate-950 hover:bg-amber-400 active:scale-[0.96] transition-all duration-150 shadow-sm"
           >
             <ArrowRightLeft className="h-3.5 w-3.5" />
             <span>Replace</span>
@@ -125,7 +131,7 @@ export const GridCell: React.FC<GridCellProps> = ({
               e.stopPropagation();
               onOpenMobileMove(index);
             }}
-            className="flex sm:hidden w-full items-center justify-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 py-1.5 text-xs font-semibold text-slate-200"
+            className="flex sm:hidden w-full items-center justify-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800 py-1.5 text-xs font-semibold text-slate-200 active:scale-[0.96] transition-all duration-150"
           >
             <Move className="h-3.5 w-3.5" />
             <span>Move</span>
@@ -137,7 +143,7 @@ export const GridCell: React.FC<GridCellProps> = ({
               e.stopPropagation();
               onRemove(index);
             }}
-            className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-rose-500/30 bg-rose-500/10 py-1.5 text-xs font-semibold text-rose-300 hover:bg-rose-500/20 transition-colors"
+            className="flex w-full items-center justify-center gap-1.5 rounded-lg border border-rose-500/30 bg-rose-500/10 py-1.5 text-xs font-semibold text-rose-300 hover:bg-rose-500/20 active:scale-[0.96] transition-all duration-150"
           >
             <Trash2 className="h-3.5 w-3.5" />
             <span>Remove</span>

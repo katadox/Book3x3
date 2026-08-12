@@ -19,7 +19,7 @@ export const BookCard: React.FC<BookCardProps> = ({
   onSelectDetails,
 }) => {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900/70 p-3 backdrop-blur-md transition-all duration-300 hover:border-amber-500/40 hover:bg-slate-900/90 hover:shadow-lg">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900/70 p-3 backdrop-blur-md transition-all duration-200 ease-out hover:border-amber-500/40 hover:bg-slate-900/90 hover:shadow-lg">
       
       {/* Cover Image */}
       <div
@@ -30,7 +30,7 @@ export const BookCard: React.FC<BookCardProps> = ({
         <img
           src={book.coverUrl}
           alt={book.title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-200 ease-out group-hover:scale-105"
           loading="lazy"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
@@ -40,7 +40,7 @@ export const BookCard: React.FC<BookCardProps> = ({
         />
 
         {/* Hover info badge */}
-        <div className="absolute top-2 right-2 rounded-full bg-slate-950/80 p-1.5 text-slate-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute top-2 right-2 rounded-full bg-slate-950/80 p-1.5 text-slate-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-150">
           <Info className="h-3.5 w-3.5" />
         </div>
       </div>
@@ -48,7 +48,7 @@ export const BookCard: React.FC<BookCardProps> = ({
       {/* Book Information */}
       <div className="mt-3 flex flex-1 flex-col justify-between space-y-2">
         <div onClick={() => onSelectDetails(book)} className="cursor-pointer" title={book.title}>
-          <h4 className="font-serif text-sm font-bold text-white leading-snug group-hover:text-amber-400 transition-colors break-words">
+          <h4 className="font-serif text-sm font-bold text-white leading-snug group-hover:text-amber-400 transition-colors duration-150 break-words">
             {book.title}
           </h4>
           <p className="text-xs font-medium text-slate-400 line-clamp-2 mt-1">{book.author}</p>
@@ -72,9 +72,9 @@ export const BookCard: React.FC<BookCardProps> = ({
           <button
             disabled={!canAdd}
             onClick={() => onAddBook(book)}
-            className={`flex w-full items-center justify-center gap-1.5 rounded-lg py-1.5 text-xs font-bold transition-all ${
+            className={`flex w-full items-center justify-center gap-1.5 rounded-lg py-1.5 text-xs font-bold transition-all duration-150 ${
               canAdd
-                ? 'bg-amber-500 text-slate-950 hover:bg-amber-400 shadow-sm active:scale-95'
+                ? 'bg-amber-500 text-slate-950 hover:bg-amber-400 shadow-sm active:scale-[0.97]'
                 : 'bg-slate-800 text-slate-500 cursor-not-allowed'
             }`}
           >

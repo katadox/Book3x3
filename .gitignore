@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor & Agent directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent & automation local config
+.agents
+.agents/
+.atom8n
+

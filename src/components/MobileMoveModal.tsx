@@ -22,7 +22,7 @@ export const MobileMoveModal: React.FC<MobileMoveModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-md animate-fade-in md:hidden">
-      <div className="relative w-full max-w-sm rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-2xl">
+      <div className="relative w-full max-w-sm rounded-2xl border border-slate-800 bg-slate-900 p-5 shadow-2xl animate-modal-enter">
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
@@ -32,7 +32,7 @@ export const MobileMoveModal: React.FC<MobileMoveModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="rounded-full p-1 text-slate-400 hover:bg-slate-800 hover:text-white"
+            className="rounded-full p-1 text-slate-400 hover:bg-slate-800 hover:text-white active:scale-[0.95] transition-all duration-150"
           >
             <X className="h-5 w-5" />
           </button>
@@ -66,7 +66,7 @@ export const MobileMoveModal: React.FC<MobileMoveModalProps> = ({
                   onSwapSlots(sourceIndex, idx);
                   onClose();
                 }}
-                className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-xs font-semibold transition-all duration-150 active:scale-[0.96] ${
                   isSelf
                     ? 'border-amber-500/50 bg-amber-500/10 text-amber-300 cursor-not-allowed opacity-60'
                     : b
@@ -89,7 +89,7 @@ export const MobileMoveModal: React.FC<MobileMoveModalProps> = ({
             onRemoveBook(sourceIndex);
             onClose();
           }}
-          className="flex w-full items-center justify-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 py-2.5 text-xs font-bold text-rose-300 hover:bg-rose-500/20"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 py-2.5 text-xs font-bold text-rose-300 hover:bg-rose-500/20 active:scale-[0.96] transition-all duration-150"
         >
           <Trash2 className="h-4 w-4" />
           <span>Remove Book from Grid</span>
