@@ -13,17 +13,16 @@ Book3x3 is a modern, client-side web application inspired by popular 3×3 aesthe
 
 ---
 
-## 🎨 Screenshots
+## 🎨 Screenshots & Visual Preview
 
-```text
-┌──────────────────────────────────────────────┐
-│  Book3x3 - 3x3 Creator Workbench             │
-│                                              │
-│  [ Search Books ]     [ 3x3 Live Preview ]   │
-│  [ 3x3 Grid Editor ]  [ Customization Panel ]│
-│                       [ PNG/JPG Export ]     │
-└──────────────────────────────────────────────┘
-```
+### 1. Home Page & 3×3 Showcase
+![Book3x3 Hero Showcase](public/assets/hero-preview.png)
+
+### 2. 3×3 Creator Workbench & Live Preview
+![Book3x3 Creator Workbench](public/assets/workbench-preview.png)
+
+### 3. Reactive Slot Search & Highlight
+![Book3x3 Reactive Slot Search](public/assets/reactive-search-preview.png)
 
 ---
 
