@@ -33,7 +33,6 @@ Book3x3 is a modern, client-side web application inspired by popular 3×3 aesthe
 * **🎯 3×3 Grid Editor**: Select exactly 9 books into interactive slots with hover replacements and instant removals.
 * **🖐️ Drag and Drop Reordering**: Drag books between cells on desktop or use a touch-friendly move modal on mobile devices.
 * **🎨 5 Layout Presets**: Choose between *Classic*, *Minimal*, *Cinematic*, *Library*, and *Poster* visual themes.
-* **🌈 Auto Theme Extractor**: Analyze cover images client-side using HTML Canvas API to generate a visually cohesive dominant color palette and background gradient.
 * **🖼️ High-Resolution Export**: Render high-res PNG or JPG images at 1080×1080 or 2048×2048 directly in the browser with CORS fallback safety.
 * **🚀 Web Share Integration**: Share your grid via the native Web Share API or copy a direct shareable link.
 * **🔀 Quick Utilities**: Randomly *Shuffle* selected books, load preset *Surprise Me* grids, or *Clear Grid* with confirmation prompts.
@@ -71,7 +70,7 @@ Ensure you have Node.js (v18+) installed on your machine.
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/USERNAME/book9x9.git
+   git clone https://github.com/katadox/book3x3.git
    cd book9x9
    ```
 
